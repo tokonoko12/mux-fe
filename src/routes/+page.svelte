@@ -21,7 +21,7 @@
 		<Hero movie={heroMovie} />
 	{/if}
 
-	<div class="-mt-32 relative z-10 space-y-8">
+	<div class="-mt-32 relative z-10 space-y-4">
 		<MediaRow title="Trending Now" movies={data.trending} />
 		<MediaRow title="Popular on Mux" movies={data.popular} />
 		<MediaRow title="Top Rated" movies={data.topRated} />

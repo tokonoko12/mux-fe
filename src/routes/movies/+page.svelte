@@ -20,7 +20,7 @@
 		<Hero movie={heroMovie} />
 	{/if}
 
-	<div class="-mt-32 relative z-10 space-y-8">
+	<div class="-mt-32 relative z-10 space-y-4">
 		<MediaRow title="Action Thrillers" movies={data.action} />
 		<MediaRow title="Comedy Hits" movies={data.comedy} />
 		<MediaRow title="Dramatic Journeys" movies={data.drama} />

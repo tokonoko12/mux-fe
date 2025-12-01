@@ -264,7 +264,7 @@
 	<Navbar />
 
 	<!-- Backdrop Hero -->
-	<div class="relative h-[70vh] w-full overflow-hidden">
+	<div class="relative min-h-[60vh] md:h-[70vh] w-full overflow-hidden">
 		<div class="absolute inset-0">
 			{#if trailerKey}
 				<div
@@ -273,7 +273,7 @@
 				>
 					<iframe
 						bind:this={iframe}
-						class="h-full w-full scale-150 object-cover opacity-50"
+						class="h-full w-full scale-[1.7] md:scale-150 object-cover opacity-50"
 						src="https://www.youtube.com/embed/{trailerKey}?autoplay=1&mute=1&controls=0&loop=1&playlist={trailerKey}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
 						title="Trailer"
 						allow="autoplay; encrypted-media"
@@ -284,7 +284,7 @@
 
 			{#if movie.backdrop_path && (!trailerKey || !isPlaying)}
 				<img
-					src={tmdb.getImageUrl(movie.backdrop_path, 'original')}
+					src={tmdb.getImageUrl(movie.backdrop_path, 'w1280')}
 					alt={movie.title}
 					class="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
 				/>
@@ -292,22 +292,23 @@
 			<div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
 		</div>
 
-		<div class="relative flex h-full items-end px-4 pb-12 md:px-12">
+		<div class="relative flex h-full items-end px-4 pb-8 pt-24 md:pb-12 md:px-12">
 			<div class="flex w-full flex-col items-end justify-between gap-8 md:flex-row">
 				<!-- Info -->
-				<div class="max-w-3xl space-y-4">
-					<h1 class="text-4xl font-bold md:text-6xl">{movie.title}</h1>
+				<div class="max-w-3xl space-y-4 w-full">
+					<h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">{movie.title}</h1>
 
-					<div class="flex items-center gap-4 text-sm md:text-base">
+					<div class="flex flex-wrap items-center gap-3 md:gap-4 text-xs sm:text-sm md:text-base">
 						<span class="font-bold text-green-400"
 							>{Math.round(movie.vote_average * 10)}% Match</span
 						>
 						<span>{new Date(movie.release_date).getFullYear()}</span>
 						<span>{movie.runtime}m</span>
 						{#if movie.genres}
-							<div class="flex gap-2">
+							<div class="flex flex-wrap gap-2">
 								{#each movie.genres as genre}
-									<span class="rounded-full border border-gray-600 px-2 py-0.5 text-xs"
+									<span
+										class="rounded-full border border-gray-600 px-2 py-0.5 text-[10px] md:text-xs"
 										>{genre.name}</span
 									>
 								{/each}
@@ -315,10 +316,10 @@
 						{/if}
 					</div>
 
-					<div class="flex flex-col gap-6 pt-6 lg:flex-row lg:items-center">
+					<div class="flex flex-col gap-4 pt-2 md:pt-6 lg:flex-row lg:items-center">
 						<div class="flex items-center gap-4">
 							<button
-								class="rounded-full border border-white/20 bg-white/10 px-8 py-3 font-bold text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95"
+								class="rounded-full border border-white/20 bg-white/10 px-6 py-2 md:px-8 md:py-3 font-bold text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95 text-xs md:text-base"
 								onclick={openModal}
 							>
 								Watch Trailer
@@ -327,7 +328,7 @@
 							{#if trailerKey}
 								<div class="flex gap-2 ml-2">
 									<button
-										class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95"
+										class="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95"
 										onclick={togglePlay}
 										aria-label={isPlaying ? 'Pause' : 'Play'}
 									>
@@ -338,7 +339,7 @@
 												viewBox="0 0 24 24"
 												stroke-width="1.5"
 												stroke="currentColor"
-												class="w-6 h-6"
+												class="w-5 h-5 md:w-6 md:h-6"
 											>
 												<path
 													stroke-linecap="round"
@@ -353,7 +354,7 @@
 												viewBox="0 0 24 24"
 												stroke-width="1.5"
 												stroke="currentColor"
-												class="w-6 h-6"
+												class="w-5 h-5 md:w-6 md:h-6"
 											>
 												<path
 													stroke-linecap="round"
@@ -364,7 +365,7 @@
 										{/if}
 									</button>
 									<button
-										class="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95"
+										class="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95"
 										onclick={toggleMute}
 										aria-label={isMuted ? 'Unmute' : 'Mute'}
 									>
@@ -375,7 +376,7 @@
 												viewBox="0 0 24 24"
 												stroke-width="1.5"
 												stroke="currentColor"
-												class="w-6 h-6"
+												class="w-5 h-5 md:w-6 md:h-6"
 											>
 												<path
 													stroke-linecap="round"
@@ -390,7 +391,7 @@
 												viewBox="0 0 24 24"
 												stroke-width="1.5"
 												stroke="currentColor"
-												class="w-6 h-6"
+												class="w-5 h-5 md:w-6 md:h-6"
 											>
 												<path
 													stroke-linecap="round"
@@ -405,7 +406,7 @@
 						</div>
 
 						<!-- Top Cast Preview -->
-						<div class="flex items-center gap-4 border-l border-white/10 pl-6">
+						<div class="flex items-center gap-4 border-l border-white/10 pl-6 hidden md:flex">
 							<div class="flex -space-x-4">
 								{#each movie.credits.cast.slice(0, 5) as person}
 									{#if person.profile_path}
@@ -429,11 +430,13 @@
 						</div>
 					</div>
 
-					<p class="text-lg text-gray-300">{movie.overview}</p>
+					<p class="text-sm md:text-lg text-gray-300 line-clamp-4 md:line-clamp-none">
+						{movie.overview}
+					</p>
 
-					<div class="pt-4">
+					<div class="pt-4 flex flex-wrap gap-4">
 						<button
-							class="rounded-full bg-primary px-8 py-3 font-bold text-white shadow-lg shadow-primary/30 transition hover:scale-105 hover:bg-primary-hover active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+							class="rounded-full bg-primary px-6 py-3 md:px-8 font-bold text-white shadow-lg shadow-primary/30 transition hover:scale-105 hover:bg-primary-hover active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex-1 md:flex-none text-center text-sm md:text-base"
 							onclick={handlePlayNow}
 							disabled={isLoadingStreams || !streams || Object.keys(streams).length === 0}
 						>
@@ -444,7 +447,7 @@
 									: 'Play Now'}
 						</button>
 						<button
-							class="rounded-full border border-white/20 bg-white/10 px-8 py-3 font-bold text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+							class="rounded-full border border-white/20 bg-white/10 px-6 py-3 md:px-8 font-bold text-white backdrop-blur-md transition hover:scale-105 hover:bg-white/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex-1 md:flex-none text-center text-sm md:text-base"
 							onclick={openSourceModal}
 							disabled={isLoadingStreams || !streams || Object.keys(streams).length === 0}
 						>
@@ -454,7 +457,7 @@
 				</div>
 
 				<!-- Poster -->
-				<div class="hidden h-96 w-64 shrink-0 overflow-hidden rounded-lg shadow-2xl md:block">
+				<div class="hidden md:block h-96 w-64 shrink-0 overflow-hidden rounded-lg shadow-2xl">
 					<img
 						src={tmdb.getImageUrl(movie.poster_path)}
 						alt={movie.title}

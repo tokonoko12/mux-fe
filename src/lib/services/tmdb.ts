@@ -89,7 +89,7 @@ export const tmdb = {
         return fetchTMDB<PaginatedResponse<Movie | TVShow | Person>>('/search/multi', { query });
     },
 
-    getImageUrl: (path: string | null, size: 'w500' | 'original' = 'w500') => {
+    getImageUrl: (path: string | null, size: 'w500' | 'original' | 'w1280' = 'w500') => {
         if (!path) return '';
         // You might want a placeholder here
         return `https://image.tmdb.org/t/p/${size}${path}`;

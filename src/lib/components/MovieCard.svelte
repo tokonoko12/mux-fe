@@ -28,8 +28,10 @@
 		<div
 			class="flex h-full flex-col justify-end p-4 translate-y-4 transition-transform duration-300 group-hover/card:translate-y-0"
 		>
-			<h3 class="font-bold text-white">{movie.title || movie.name}</h3>
-			<div class="flex items-center gap-2 text-xs text-gray-300">
+			<h3 class="font-bold text-white text-sm md:text-base lg:text-lg leading-tight">
+				{movie.title || movie.name}
+			</h3>
+			<div class="flex items-center gap-2 text-[10px] md:text-xs text-gray-300">
 				<span>{new Date(movie.release_date || movie.first_air_date || '').getFullYear()}</span>
 			</div>
 		</div>
