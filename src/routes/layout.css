@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+
+  --color-primary: #8b5cf6; /* Violet-500 */
+  --color-primary-hover: #7c3aed; /* Violet-600 */
+  --color-dark: #0f0f0f; /* Slightly lighter than pure black */
+  --color-dark-lighter: #1a1a1a;
+  --color-gray-text: #9ca3af;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: white;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
